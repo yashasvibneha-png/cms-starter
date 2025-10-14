@@ -1,11 +1,54 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CMS Starter</title>
+    <title>CMS Starter - Home</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 40px;
+        }
+        h1 {
+            color: #333;
+        }
+        .post {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .post h2 {
+            margin-top: 0;
+        }
+        a.button {
+            display: inline-block;
+            padding: 8px 15px;
+            background-color: #0078d7;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+        a.button:hover {
+            background-color: #005a9e;
+        }
+    </style>
 </head>
 <body>
     <h1>Welcome to CMS Starter!</h1>
-    <p>This is your home page.</p>
-    <a href="/create">Create Post</a>
+
+    <a href="/create" class="button">Create New Post</a>
+    <hr>
+
+    {% if posts %}
+        {% for post in posts %}
+            <div class="post">
+                <h2>{{ post.title }}</h2>
+                <p>{{ post.content }}</p>
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No posts yet. Click "Create New Post" to add one!</p>
+    {% endif %}
+
 </body>
 </html>
+
