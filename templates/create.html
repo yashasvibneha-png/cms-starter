@@ -1,31 +1,31 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
     <title>Create Post</title>
 </head>
 <body>
-    <h1>Create a New Post</h1>
+    <h2>Create a New Post</h2>
     <form method="POST" enctype="multipart/form-data">
-        <label for="title">Title:</label><br>
-        <input type="text" id="title" name="title" required><br><br>
+        <label>Title:</label><br>
+        <input type="text" name="title" required><br><br>
 
-        <label for="author">Author:</label><br>
-        <input type="text" id="author" name="author" required><br><br>
+        <label>Author:</label><br>
+        <input type="text" name="author" required><br><br>
 
-        <label for="content">Body:</label><br>
-        <textarea id="content" name="content" rows="5" cols="40" required></textarea><br><br>
+        <label>Body:</label><br>
+        <textarea name="body" rows="4" cols="40" required></textarea><br><br>
 
-        <label for="image">Upload Image:</label><br>
-        <input type="file" id="image" name="image" accept="image/*"><br><br>
+        <label>Image:</label><br>
+        <input type="file" name="image" accept="image/*"><br><br>
 
-        <button type="submit">Submit</button>
+        <button type="submit">Submit Post</button>
     </form>
 
     <br>
-    <a href="/">Back to Home</a>
+    <a href="{{ url_for('views.index') }}">Back to Home</a>
 </body>
 </html>
+
 
 
    
