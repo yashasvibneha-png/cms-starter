@@ -21,5 +21,5 @@ def create_app():
 
     return app
 
-# Create app instance for Gunicorn
+# Create app instance
 app = create_app()
