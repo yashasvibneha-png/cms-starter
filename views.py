@@ -1,5 +1,4 @@
-
-    from flask import Blueprint, render_template, request
+from flask import Blueprint, render_template, request
 
 bp = Blueprint('views', __name__)
 
@@ -17,3 +16,4 @@ def create():
         return f"Post '{title}' submitted successfully!"
     return render_template('create.html')
 
+    
