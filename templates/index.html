@@ -1,81 +1,23 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>CMS Starter - Home</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 40px;
-        }
-        h1 {
-            color: #333;
-        }
-        .post {
-            border: 1px solid #ddd;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-        }
-        .post h2 {
-            margin-top: 0;
-        }
-        a.button {
-            display: inline-block;
-            padding: 8px 15px;
-            background-color: #0078d7;
-            color: white;
-            text-decoration: none;
-            border-radius: 4px;
-        }
-        a.button:hover {
-            background-color: #005a9e;
-        }
-    </style>
-</head>
-<body>
-    <h1>Welcome to CMS Starter!</h1>
-
-    <a href="/create" class="button">Create New Post</a>
-    <hr>
-
-    {% if posts %}
-        {% for post in posts %}
-            <div class="post">
-                <h2>{{ post.title }}</h2>
-                <p>{{ p<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Home - Posts</title>
+    <title>Posts Home</title>
 </head>
 <body>
     <h1>All Posts</h1>
+    <a href="{{ url_for('views.create') }}">➕ Create New Post</a>
+    <hr>
 
-    <a href="/create">Create New Post</a><br><br>
-
-    {% if posts %}
-        {% for post in posts %}
-            <div style="border:1px solid #ccc; padding:10px; margin:10px 0;">
-                <h2>{{ post.title }}</h2>
-                <p><strong>By:</strong> {{ post.author }}</p>
-                <p>{{ post.content }}</p>
-                {% if post.image %}
-                    <img src="{{ post.image }}" alt="Post Image" width="200">
-                {% endif %}
-            </div>
-        {% endfor %}
+    {% for post in posts %}
+        <h2>{{ post.title }}</h2>
+        <p><b>Author:</b> {{ post.author }}</p>
+        <p>{{ post.body }}</p>
+        {% if post.image %}
+            <img src="{{ url_for('static', filename='uploads/' + post.image) }}" width="200"><br>
+        {% endif %}
+        <hr>
     {% else %}
-        <p>No posts yet. <a href="/create">Create one!</a></p>
-    {% endif %}
+        <p>No posts yet!</p>
+    {% endfor %}
 </body>
 </html>
-ost.content }}</p>
-            </div>
-        {% endfor %}
-    {% else %}
-        <p>No posts yet. Click "Create New Post" to add one!</p>
-    {% endif %}
-
-</body>
-</html>
-
