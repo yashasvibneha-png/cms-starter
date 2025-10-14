@@ -1,11 +1,10 @@
-from flask import Blueprint, render_template, request, redirect, url_for
 import os
+from flask import Blueprint, render_template, request, redirect, url_for, current_app
+from werkzeug.utils import secure_filename
 
 bp = Blueprint('views', __name__)
-posts = []  # store posts temporarily in memory
 
-UPLOAD_FOLDER = 'static/uploads'
-os.makedirs(UPLOAD_FOLDER, exist_ok=True)
+posts = []  # Temporary in-memory storage
 
 @bp.route('/')
 def index():
@@ -16,21 +15,22 @@ def create():
     if request.method == 'POST':
         title = request.form['title']
         author = request.form['author']
-        content = request.form['content']
-        image = request.files['image']
+        body = request.form['body']
+        image = request.files.get('image')
 
-        image_filename = None
-        if image and image.filename:
-            image_filename = os.path.join(UPLOAD_FOLDER, image.filename)
-            image.save(image_filename)
+        filename = None
+        if image and image.filename != '':
+            filename = secure_filename(image.filename)
+            image.save(os.path.join(current_app.config['UPLOAD_FOLDER'], filename))
 
         posts.append({
             'title': title,
             'author': author,
-            'content': content,
-            'image': image_filename
+            'body': body,
+            'image': filename
         })
 
         return redirect(url_for('views.index'))
 
     return render_template('create.html')
+
