@@ -1,0 +1,8 @@
+CREATE TABLE posts(
+  id INT IDENTITY(1,1) PRIMARY KEY,
+  title NVARCHAR(200),
+  author NVARCHAR(100),
+  body NVARCHAR(MAX),
+  image_url NVARCHAR(500),
+  created_at DATETIME DEFAULT GETDATE()
+);
