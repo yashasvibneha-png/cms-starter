@@ -11,9 +11,6 @@ def create():
     if request.method == 'POST':
         title = request.form['title']
         content = request.form['content']
-        # Here, you can save to database or log
-        print(f"New post: {title} - {content}")
-        return f"Post '{title}' submitted successfully!"
+        # Save to DB if needed
+        return f"Post created: {title}"
     return render_template('create.html')
-
-    
