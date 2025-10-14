@@ -1,3 +1,3 @@
-from your_project_name import create_app  # replace with actual folder/module name
-
+from __init__ import create_app
 application = create_app()
+
