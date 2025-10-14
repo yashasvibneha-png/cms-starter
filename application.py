@@ -1,2 +1,3 @@
-from __init__ import app  # import the Flask app
-application = app        # Gunicorn expects `application` variable
+from your_project_name import create_app  # replace with actual folder/module name
+
+application = create_app()
