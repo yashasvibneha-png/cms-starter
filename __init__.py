@@ -20,6 +20,3 @@ def create_app():
     app.register_blueprint(views_bp)
 
     return app
-
-# Create app instance
-app = create_app()
