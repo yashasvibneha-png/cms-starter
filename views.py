@@ -6,6 +6,7 @@ bp = Blueprint('views', __name__)
 def index():
     return render_template('index.html')
 
+
 @bp.route('/create', methods=['GET', 'POST'])
 def create():
     if request.method == 'POST':
