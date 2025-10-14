@@ -42,7 +42,34 @@
         {% for post in posts %}
             <div class="post">
                 <h2>{{ post.title }}</h2>
+                <p>{{ p<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Home - Posts</title>
+</head>
+<body>
+    <h1>All Posts</h1>
+
+    <a href="/create">Create New Post</a><br><br>
+
+    {% if posts %}
+        {% for post in posts %}
+            <div style="border:1px solid #ccc; padding:10px; margin:10px 0;">
+                <h2>{{ post.title }}</h2>
+                <p><strong>By:</strong> {{ post.author }}</p>
                 <p>{{ post.content }}</p>
+                {% if post.image %}
+                    <img src="{{ post.image }}" alt="Post Image" width="200">
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% else %}
+        <p>No posts yet. <a href="/create">Create one!</a></p>
+    {% endif %}
+</body>
+</html>
+ost.content }}</p>
             </div>
         {% endfor %}
     {% else %}
