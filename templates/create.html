@@ -1,1 +1,21 @@
-# (paste the create.html code block here)
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Create Post - CMS Starter</title>
+</head>
+<body>
+    <h1>Create a New Post</h1>
+    <form action="/create" method="post">
+        <label for="title">Title:</label><br>
+        <input type="text" id="title" name="title" required><br><br>
+
+        <label for="content">Content:</label><br>
+        <textarea id="content" name="content" rows="5" cols="30" required></textarea><br><br>
+
+        <button type="submit">Submit</button>
+    </form>
+    <br>
+    <a href="/">Back to Home</a>
+</body>
+</html>
+
