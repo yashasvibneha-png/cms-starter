@@ -1,11 +1,9 @@
 from flask import Blueprint, render_template, request
-
 bp = Blueprint('views', __name__)
 
 @bp.route('/')
 def index():
     return render_template('index.html')
-
 
 @bp.route('/create', methods=['GET', 'POST'])
 def create():
