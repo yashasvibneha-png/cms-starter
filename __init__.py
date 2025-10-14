@@ -20,3 +20,5 @@ def create_app():
     app.register_blueprint(views_bp)
 
     return app
+
+app = create_app()
