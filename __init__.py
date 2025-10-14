@@ -7,6 +7,7 @@ def create_app():
     app = Flask(__name__)
     app.config.from_object(Config)
 
+    # Logging setup
     handler = logging.StreamHandler(sys.stdout)
     handler.setLevel(logging.INFO)
     fmt = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
@@ -14,9 +15,11 @@ def create_app():
     logging.getLogger().addHandler(handler)
     logging.getLogger().setLevel(logging.INFO)
 
+    # Import and register blueprint
     from views import bp as views_bp
     app.register_blueprint(views_bp)
 
     return app
 
+# Create app instance for Gunicorn
 app = create_app()
