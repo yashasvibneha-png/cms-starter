@@ -1,26 +1,29 @@
-from flask import Blueprint, render_template, request, redirect, url_for
+l_for('views.index'))
 
-# Define the blueprint
+   from flask import Blueprint, render_template, request, redirect, url_for
+import os
+
 bp = Blueprint('views', __name__)
 
-# In-memory store for posts (for testing)
-posts = []
+UPLOAD_FOLDER = 'static/uploads'  # Folder to save uploaded images
+os.makedirs(UPLOAD_FOLDER, exist_ok=True)
 
 @bp.route('/')
 def index():
-    return render_template('index.html', posts=posts)
+    return render_template('index.html')
 
 @bp.route('/create', methods=['GET', 'POST'])
 def create():
     if request.method == 'POST':
-        title = request.form.get('title')
-        content = request.form.get('content')
+        title = request.form['title']
+        content = request.form['content']
+        image = request.files['image']
 
-        if title and content:
-            posts.append({'title': title, 'content': content})
-            # Redirect to home page after creating post
-            return redirect(url_for('views.index'))
+        if image:
+            image_path = os.path.join(UPLOAD_FOLDER, image.filename)
+            image.save(image_path)
 
-    # For GET request, just show the form
+        # For now, just redirect to home (later you can save title, content, and image_path to database)
+        return redirect(url_for('views.index'))
+
     return render_template('create.html')
-
